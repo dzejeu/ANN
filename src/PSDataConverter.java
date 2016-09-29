@@ -260,7 +260,7 @@ public class PSDataConverter {
 
     private void writeMove(byte[] move, int moveNr, int enableEncoding) throws IOException {
         if(enableEncoding==0){
-            /*boolean wasWritten=false;
+            boolean wasWritten=false;
             for(int n=0;n<move.length-1;n++){
                 if(n>0 && n<5){
                     if(move[n]==1){
@@ -270,8 +270,8 @@ public class PSDataConverter {
                     else if(n==4 && !wasWritten) writeOutputData.write("0"+"\n");
                 }
                 else writeOutputData.write(String.valueOf(move[n])+"\n");
-            }*/
-            for(byte mv : move ) writeOutputData.write(String.valueOf(mv)+"\n");
+            }
+            //for(byte mv : move ) writeOutputData.write(String.valueOf(mv)+"\n");
             writeOutputData.write("X"+"\n");
         }
         else if(enableEncoding==1){
