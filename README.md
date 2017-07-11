@@ -10,7 +10,7 @@ This neural network was used to classify cards images retrieved from online poke
 The usage is pretty simple.
 
 Training phase:
-'''java
+```java
 int[] initVector = {100,30,10};   //100 input values -> 30 neurons in 1st layer -> 10 neurons in output layer
 NeuralNet ann = new NeuralNet(initVector);
 double[] inputData = new double[100];   //fill it with input values
@@ -19,19 +19,21 @@ ann.setInputData(inputData);
 ann.setDesiredOutputData(outputTrainingData);
 double frictionCoeff = 0.6;   //declare friction amount (prevents getting stuck in local minima)
 ann.trainNet(frictionCoeff);
-ann.
+ann.evaluateSquaredErrors();
+System.out.print(ann.outputErrorMatrix);
 
 //repeat until error is low enough
 
 ann.saveWeightsToFile("w.txt");
-'''
+```
 
 Using phase:
-'''java
+```java
 int[] initVector = {100,30,10};   //100 input values -> 30 neurons in 1st layer -> 10 neurons in output layer
 NeuralNet ann = new NeuralNet(initVector);
 ann.loadWeightsFromFile("w.txt");
 double[] inputData = new double[100];   //fill it with input values
 ann.setInputData(inputData);
 ann.runNet();
-'''
+System.out.print(ann.outputMatrix);
+```
